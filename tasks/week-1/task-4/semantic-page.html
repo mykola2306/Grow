@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Semantic Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="./style.css" />
+</head>
+
+<body>
+  <div class="desktop">
+    <h1>Desktop</h1>
+    <div class="nonSemantic">
+      <div>
+        &lt;DIV
+        <span>class="header"</span>&gt;</div>
+      <div>&lt;DIV
+        <span>class="nav"</span>&gt;</div>
+      <div class="group">
+        <div class="divSection">
+          &lt;DIV
+          <span>class="section"</span>&gt;
+          <div class="divArticle">&lt;DIV
+            <span>class="article"</span>&gt;</div>
+        </div>
+        <div class="divAside">&lt;DIV
+          <span>class="aside"</span>&gt;</div>
+      </div>
+      <div>&lt;DIV
+        <span>class="footer"</span>&gt;</div>
+    </div>
+
+    <div class="semantic">
+      <header>&lt;HEADER&gt;</header>
+      <nav>&lt;NAV&gt;</nav>
+      <div class="group">
+        <section>
+          &lt;SECTION&gt;
+          <article>&lt;ARTICE&gt;</article>
+        </section>
+        <aside>&lt;ASIDE&gt;</aside>
+      </div>
+      <footer>&lt;FOOTER&gt;</footer>
+    </div>
+  </div>
+
+  <div class="mobile">
+    <h1>Mobile</h1>
+    <div class="nonSemantic">
+      <div>
+        &lt;DIV
+        <span>class="header"</span>&gt;</div>
+      <div>&lt;DIV
+        <span>class="nav"</span>&gt;</div>
+      <div class="divSection">
+        &lt;DIV
+        <span>class="section"</span>&gt;
+        <div class="divArticle">&lt;DIV
+          <span>class="article"</span>&gt;</div>
+      </div>
+      <div>&lt;DIV
+        <span>class="aside"</span>&gt;</div>
+      <div>&lt;DIV
+        <span>class="footer"</span>&gt;</div>
+    </div>
+
+    <div class="semantic">
+      <header>&lt;HEADER&gt;</header>
+      <nav>&lt;NAV&gt;</nav>
+      <section>
+        &lt;SECTION&gt;
+        <article>&lt;ARTICE&gt;</article>
+      </section>
+      <aside>&lt;ASIDE&gt;</aside>
+      <footer>&lt;FOOTER&gt;</footer>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>

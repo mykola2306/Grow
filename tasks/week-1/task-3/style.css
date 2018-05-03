@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: grey;
+  min-height: 500px;
+}
+
+.active {
+  background: rgb(17, 212, 17);
+}
+
+nav {
+  background: black;
+  display: flex;
+}
+
+nav button {
+  background: black;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  outline: none;
+}
+
+nav a {
+  display: block;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+nav a:hover,
+nav button:hover,
+.dropDown:hover .dropbtn {
+  background: rgb(15, 167, 167);
+}
+
+.dropDown {
+  position: relative;
+  overflow: hidden;
+}
+
+.dropDown:hover {
+  overflow: unset;
+}
+
+.dropDown:hover .dropDownContent {
+  height: auto;
+}
+
+.dropDownContent {
+  position: absolute;
+  left: 0;
+  background: white;
+  height: 0px;
+}
+
+.dropDownContent a {
+  min-width: 100px;
+  color: black;
+}
+
+@media screen and (max-width: 480px) {
+  nav {
+    flex-direction: column;
+  }
+  .dropDownContent {
+    position: unset;
+  }
+}

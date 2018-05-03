@@ -1,0 +1,76 @@
+body {
+  margin-top: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.desktop {
+  max-width: 1300px;
+  margin: auto;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* flex-wrap: wrap; */
+}
+.desktop .float{ 
+  float: left;
+}
+.desktop .flexbox{
+  float: right;
+}
+
+.desktop h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.float,
+.flexbox {
+  border: 5px solid black;
+  background: rgba(0, 206, 209, 0.055);
+  width: 49%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: bold;
+}
+
+.floatItems{
+  overflow: auto;
+}
+.floatItems .item{
+  float: left;
+  border: 3px solid grey;
+  padding: 5px 10px;
+  margin: 5px 5px;
+}
+
+.flexboxItems{
+  display: flex;
+  justify-content: center;
+}
+
+.flexboxItems .item{
+  border: 3px solid grey;
+  padding: 5px 10px;
+  margin: 5px 5px;
+}
+
+.floatCenter {
+  float: right;
+  position: relative;
+  left: -50%;
+  text-align: left;
+}
+.floatCenter > .floatItems {
+  position: relative;
+  left: 50%;
+}
+
+pre{  
+  float: left;
+}
+
+.flexBoxCode{
+  float: right;
+  position: relative;
+  right: 100px;
+}
