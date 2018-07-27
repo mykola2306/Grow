@@ -1,0 +1,104 @@
+let allMangas = []
+let searchFieldInput = document.getElementById("search")
+let searchListOuput = document.getElementById("searchList")
+
+let websites = {
+  wuxia: {
+    url: "https://www.wuxiaworld.com/updates",
+    querySelector: "span.title a, td>a"
+  },
+  stream: {
+    url: "22",
+    querySelector: "222"
+  }
+}
+
+function getHTML(site) {
+  var request = new XMLHttpRequest();
+  request.open('GET', site.url, true);
+  request.onload = function () {
+    if (request.status >= 200 && request.status < 400) {
+      console.log("RESPONSE=========\n", request.responseText.substring(0, 50))
+      console.log(convertToDom(request.responseText, site))
+    } else {
+      // We reached our target server, but it returned an error
+      console.warn("SOMETHING WENT BAD TRY AGAIN")
+    }
+  };
+  request.onerror = function () {
+    // There was a connection error of some sort
+  };
+  request.send();
+}
+
+
+function convertToDom(response, site) {
+  const toNodes = html => new DOMParser().parseFromString(response, 'text/html').body.childNodes
+  let nodeListFromResponse = toNodes();
+  console.log(nodeListFromResponse)
+  let DOM = nodeListFromResponse[0].getRootNode();
+  console.log(DOM)
+  
+  let mangaNodeList = DOM.querySelectorAll(site.querySelector)
+  console.log(mangaNodeList);
+
+  let mangaObj = [];
+  allMangas = [];
+  let nameChapterPair = [];
+  let nameChapterPairObj = {}
+
+  for(let i = 0; i < mangaNodeList.length; i+=2){
+    nameChapterPairObj.name = mangaNodeList[i].textContent;
+    nameChapterPairObj.url = mangaNodeList[i].attributes.href.value;
+    nameChapterPairObj.chapter = mangaNodeList[i+1].textContent;
+    
+    nameChapterPair.push(mangaNodeList[i].textContent);
+    nameChapterPair.push(mangaNodeList[i+1].textContent);
+
+    allMangas.push(nameChapterPair);
+    mangaObj.push(nameChapterPairObj)
+    // console.log(nameChapterPair)
+    nameChapterPair = [];
+    nameChapterPairObj = {}
+  }
+  console.log(allMangas)
+  console.log(mangaObj)
+}
+
+
+
+
+searchFieldInput.addEventListener('input', function (e) {
+  // something(this.value);
+  console.log("typed")
+  if(e.target.value.length <= 2){
+    if(searchListOuput.firstChild){
+      while (searchListOuput.firstChild) {
+        searchListOuput.removeChild(searchListOuput.firstChild);
+      }
+    }
+  }
+
+  if(e.target.value.length >= 3){
+    console.log(e.target.value)
+
+    while (searchListOuput.firstChild) {
+      searchListOuput.removeChild(searchListOuput.firstChild);
+    }
+    // var el = allMangas.filter(a => a.toLowerCase().includes("one"));
+    let results = allMangas.filter(function(manga) {
+      return manga[0].toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0;
+    });
+    for(let i = 0; i < results.length; i++){
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(results[i]));
+      searchListOuput.appendChild(li);
+    }
+    console.log(results)
+  }
+
+});
+
+
+getHTML(websites.wuxia, true);
+// getHTML('https://github.com/mykola2306/ExtensionMangaNotify', true);
